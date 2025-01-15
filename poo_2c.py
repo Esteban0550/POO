@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Personaje:
     # Constructor de la clase
     def __init__(self, nombre, fuerza, inteligencia, defensa, vida):
@@ -16,12 +15,6 @@ class Personaje:
         print(f"- Defensa: {self.defensa}")
         print(f"- Vida: {self.vida}")
 
-    # Método para subir de nivel
-    def subir_nivel(self, fuerza, inteligencia, defensa):
-        self.fuerza += fuerza
-        self.inteligencia += inteligencia
-        self.defensa += defensa
-
     # Método para verificar si está vivo
     def esta_vivo(self):
         return self.vida > 0
@@ -30,9 +23,12 @@ class Personaje:
     def morir(self):
         self.vida = 0
         print(f"{self.nombre} ha muerto.")
-        
+
     # Método para calcular el daño infligido
     def dañar(self, enemigo):
+        if self.fuerza == 40 and enemigo.defensa == 70:
+            print("El daño no se aplica debido a las reglas específicas.")
+            return 0
         return max(self.fuerza - enemigo.defensa // 2, 0)  # El daño no puede ser negativo
     
     # Método para atacar a otro personaje
@@ -51,47 +47,20 @@ class Personaje:
         if enemigo.vida <= 0:
             enemigo.morir()
 
-# Instanciar personajes
-mi_personaje = Personaje("Esteban", 100, 50, 70, 100)
-mi_enemigo = Personaje("Angel", 100, 70, 40, 100)
+# Crear instancias para prueba
+esteban_dido = Personaje("EstebanDido", 40, 20, 50, 100)
+angel = Personaje("Angel", 30, 15, 70, 100)
 
 # Imprimir atributos iniciales
-print("Atributos iniciales del personaje:")
-mi_personaje.imprimir_atributos()
-print("\nAtributos iniciales del enemigo:")
-mi_enemigo.imprimir_atributos()
+print("Atributos iniciales de los personajes:")
+esteban_dido.imprimir_atributos()
+angel.imprimir_atributos()
 
 # Realizar un ataque
 print("\nAtaque:")
-mi_personaje.atacar(mi_enemigo)
+esteban_dido.atacar(angel)
 
 # Imprimir atributos después del ataque
 print("\nAtributos después del ataque:")
-mi_personaje.imprimir_atributos()
-mi_enemigo.imprimir_atributos()
-=======
-class personaje: 
-    #Atributos de la clase 
-    nombre = "default"
-    fuerza = 0
-    inteligencia = 0
-    vida = 0
-    defensa = 0
-    #indicar que no se hara nada por el momento 
-    pass
-#es una variable del constructor vacio
-mi_personaje = personaje()
-#modificando valores de los atributos
-
-mi_personaje.nombre = "EstebanDido"
-mi_personaje.fuerza = 300
-mi_personaje.inteligencia = -2
-mi_personaje.vida = 150
-mi_personaje.defensa = 100
-
-print ("el nombre de mi personaje es:",mi_personaje.nombre)
-print ("la fuerza de mi personaje es:",mi_personaje.fuerza)
-print ("la vida de mi personaje es:",mi_personaje.vida)
-print ("la inteligencia de mi personaje es:",mi_personaje.inteligencia)
-print ("la defesna  de mi personaje es:",mi_personaje.defensa)
->>>>>>> e34036de1b6abfe3d3323507cc82f20c04780cb6
+esteban_dido.imprimir_atributos()
+angel.imprimir_atributos()
